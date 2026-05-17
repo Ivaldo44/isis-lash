@@ -21,7 +21,8 @@ import {
   Plus,
   Trash2,
   LogOut,
-  Camera
+  Camera,
+  Pencil
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { supabase } from './lib/supabase';
@@ -838,23 +839,25 @@ export default function App() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
 
                   {isLoggedIn && (
-                    <div className="absolute top-4 left-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all">
+                    <div className="absolute top-4 right-4 flex flex-col gap-2 z-20">
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
                           setEditingProcedure(product);
                         }}
-                        className="p-2.5 bg-white/90 backdrop-blur-md text-kindness-accent rounded-full hover:bg-kindness-accent hover:text-white hover:scale-110 transition-all"
-                        title="Editar Imagem/Dados"
+                        className="p-3 bg-white shadow-xl text-kindness-accent rounded-full hover:bg-kindness-accent hover:text-white transition-all transform hover:scale-110 active:scale-95 border border-black/5"
+                        title="Editar Procedimento"
                       >
-                        <Camera className="w-4 h-4" />
+                        <Pencil className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDeleteProcedure(product.id);
+                          if (confirm('Tem certeza que deseja excluir este procedimento?')) {
+                            handleDeleteProcedure(product.id);
+                          }
                         }}
-                        className="p-2.5 bg-red-500/90 backdrop-blur-md text-white rounded-full hover:bg-red-600 hover:scale-110 transition-all"
+                        className="p-3 bg-white shadow-xl text-red-500 rounded-full hover:bg-red-500 hover:text-white transition-all transform hover:scale-110 active:scale-95 border border-black/5"
                         title="Excluir Procedimento"
                       >
                         <Trash2 className="w-4 h-4" />
