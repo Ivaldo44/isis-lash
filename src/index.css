@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-kindness-pink: #FDF2F5;
+  --color-kindness-pink-dark: #FCE4EC;
+  --color-kindness-lilac: #F8F3F9;
+  --color-kindness-green: #F1F8F1;
+  --color-kindness-beige: #FFFBF0;
+  --color-kindness-text: #1A1A1A;
+  --color-kindness-text-light: #666666;
+  --color-kindness-accent: #D81B60;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2.25rem;
+  --radius-4xl: 3rem;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-kindness-text bg-white antialiased selection:bg-kindness-pink-dark selection:text-kindness-accent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-medium tracking-tight text-balance;
+  }
+
+  .serif {
+    @apply font-serif italic;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-kindness-text text-white px-10 py-4 rounded-full font-medium transition-all duration-500 hover:bg-black hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:-translate-y-0.5 active:scale-95 text-sm uppercase tracking-widest;
+  }
+
+  .btn-outline {
+    @apply border border-kindness-text/10 px-10 py-4 rounded-full font-medium transition-all duration-500 hover:bg-kindness-text hover:text-white text-sm uppercase tracking-widest;
+  }
+
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+
+  .blob-animate {
+    animation: blob-morph 10s ease-in-out infinite;
+  }
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 40%; }
+  33% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  66% { border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
