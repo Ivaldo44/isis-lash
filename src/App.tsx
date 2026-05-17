@@ -28,12 +28,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { supabase } from './lib/supabase';
 
 // Local backup if database is empty
-const defaultProcedures = [
-  { id: '1', name: 'Extensão Clássica', price: 120, image: 'https://images.unsplash.com/photo-1583307132135-06041ec3093c?auto=format&fit=crop&q=80&w=600' },
-  { id: '2', name: 'Volume Híbrido', price: 150, image: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&q=80&w=600' },
-  { id: '3', name: 'Volume Russo', price: 180, image: 'https://images.unsplash.com/photo-1628191139360-4083564d03fd?auto=format&fit=crop&q=80&w=600' },
-  { id: '4', name: 'Lash Lifting', price: 100, image: 'https://images.unsplash.com/photo-1589710751893-f9a6770ad71b?auto=format&fit=crop&q=80&w=600' },
-];
+const defaultProcedures: any[] = [];
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
